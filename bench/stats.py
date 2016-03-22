@@ -13,7 +13,6 @@ def pairs(l, n):
 
 values = [ float(y) - float(x) for (x,y) in pairs(sys.stdin.readlines(),2)]
 
-print("mean = %.4f, median = %.4f, stdev = %.4f" %
-    (statistics.mean(values), statistics.median(values),
+print("mean = {0:.4f}, median = {1:.4f}, stdev = {2:.4f}".format(statistics.mean(values), statistics.median(values),
       statistics.stdev(values)))
 
