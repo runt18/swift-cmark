@@ -66,7 +66,7 @@ for description in pathological:
     [rc, actual, err] = cmark.to_html(inp)
     if rc != 0:
         errored += 1
-        print(description, '[ERRORED (return code %d)]' %rc)
+        print(description, '[ERRORED (return code {0:d})]'.format(rc))
         print(err)
     elif regex.search(actual):
         print(description, '[PASSED]')
@@ -76,7 +76,7 @@ for description in pathological:
         print(repr(actual))
         failed += 1
 
-print("%d passed, %d failed, %d errored" % (passed, failed, errored))
+print("{0:d} passed, {1:d} failed, {2:d} errored".format(passed, failed, errored))
 if (failed == 0 and errored == 0):
     exit(0)
 else:

@@ -190,7 +190,7 @@ def _check_type(T, allowed):
             allowed.add(T)
         else:
             types = ', '.join([t.__name__ for t in allowed] + [T.__name__])
-            raise TypeError("unsupported mixed types: %s" % types)
+            raise TypeError("unsupported mixed types: {0!s}".format(types))
 
 
 def _exact_ratio(x):
@@ -396,7 +396,7 @@ def median_grouped(data, interval=1):
     x = data[n//2]
     for obj in (x, interval):
         if isinstance(obj, (str, bytes)):
-            raise TypeError('expected number but got %r' % obj)
+            raise TypeError('expected number but got {0!r}'.format(obj))
     try:
         L = x - interval/2  # The lower limit of the median interval.
     except TypeError:
@@ -431,7 +431,7 @@ def mode(data):
         return table[0][0]
     elif table:
         raise StatisticsError(
-                'no unique mode; found %d equally common values' % len(table)
+                'no unique mode; found {0:d} equally common values'.format(len(table))
                 )
     else:
         raise StatisticsError('no mode for empty data')
@@ -464,7 +464,7 @@ def _ss(data, c=None):
     # The following sum should mathematically equal zero, but due to rounding
     # error may not.
     ss -= _sum((x-c) for x in data)**2/len(data)
-    assert not ss < 0, 'negative sum of square deviations: %f' % ss
+    assert not ss < 0, 'negative sum of square deviations: {0:f}'.format(ss)
     return ss
 
 

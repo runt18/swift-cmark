@@ -36,7 +36,7 @@ def out(str):
     sys.stdout.buffer.write(str.encode('utf-8')) 
 
 def print_test_header(headertext, example_number, start_line, end_line):
-    out("Example %d (lines %d-%d) %s\n" % (example_number,start_line,end_line,headertext))
+    out("Example {0:d} (lines {1:d}-{2:d}) {3!s}\n".format(example_number, start_line, end_line, headertext))
 
 def do_test(test, normalize, result_counts):
     [retcode, actual_html, err] = cmark.to_html(test['markdown'])
@@ -70,7 +70,7 @@ def do_test(test, normalize, result_counts):
             result_counts['fail'] += 1
     else:
         print_test_header(test['section'], test['example'], test['start_line'], test['end_line'])
-        out("program returned error code %d\n" % retcode)
+        out("program returned error code {0:d}\n".format(retcode))
         sys.stdout.buffer.write(err)
         result_counts['error'] += 1
 
