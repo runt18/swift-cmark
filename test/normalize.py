@@ -61,7 +61,7 @@ class MyHTMLParser(HTMLParser):
             attrs.sort()
             for (k,v) in attrs:
                 self.output += " " + k
-                if v != None:
+                if v is not None:
                     self.output += ("=" + '"' + cgi.escape(v,quote=True) + '"')
         self.output += ">"
         self.last_tag = tag
@@ -110,7 +110,7 @@ class MyHTMLParser(HTMLParser):
             self.output += "&amp;"
         elif c == '"':
             self.output += "&quot;"
-        elif c == None:
+        elif c is None:
             self.output += fallback
         else:
             self.output += c
